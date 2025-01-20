@@ -1,11 +1,12 @@
 import json
 import os
+from typing import Any
 
 from src.categories import Category
 from src.products import Product
 
 
-def read_json(path: str) -> list:
+def read_json(path: str) -> Any:
     """Функция чтения файла json"""
     full_path = os.path.abspath(path)
     with open(full_path, "r", encoding="utf-8") as file:

@@ -30,13 +30,18 @@ class TestCategory(unittest.TestCase):
         assert Category.product_count == 3
         assert Category.category_count == 1
 
-    """Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.
-    Iphone 15, 210000.0 руб. Остаток: 8 шт.
-    Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт."""
-
     def test_products(self):
-        assert self.category.products == (
-            "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.\n"
-            "Iphone 15, 210000.0 руб. Остаток: 8 шт.\n"
-            "Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт.\n"
-        )
+        assert self.category.products == [
+            "Samsung Galaxy S23 Ultra 256GB, Серый цвет, 200MP камера",
+            "Iphone 15 512GB, Gray space",
+            "Xiaomi Redmi Note 11 1024GB, Синий",
+        ]
+
+
+def test_str_products():
+    my_products = Category(
+        "Смартфоны",
+        "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни",
+        [Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)],
+    )
+    assert str(my_products) == "Смартфоны, количество продуктов: 5"

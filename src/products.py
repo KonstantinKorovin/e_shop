@@ -1,6 +1,3 @@
-from typing import Any
-
-
 class Product:
     """Класс для представления продукта"""
 
@@ -17,10 +14,18 @@ class Product:
         self.quantity = quantity
 
     @classmethod
-    def new_product(cls, dict_product: dict) -> Any:
+    def new_product(cls, dict_product: dict) -> "Product":
         """Класс-метод который принимет на вход параметры товара и возвращает созданный объект класса Product"""
         product = cls(**dict_product)
         return product
+
+    def __str__(self) -> str:
+        """Метод для работы с приватным атрибутом '__products' который выводит информацию в заданном формате"""
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other: "Product") -> float:
+        """Магический метод для вывода стоимости всех товаров на складе"""
+        return (self.__price * self.quantity) + (other.__price * other.quantity)
 
     @property
     def price(self) -> float:

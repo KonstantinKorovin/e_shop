@@ -69,3 +69,8 @@ class TestProduct(unittest.TestCase):
         """Тест сеттера цены при установке той же цены"""
         self.product2.price = 210000.0
         self.assertEqual(self.product2.price, 210000.0)
+
+
+def test_str_price():
+    product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
+    assert str(product1) == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт."

@@ -1,4 +1,25 @@
-class Product:
+from abc import ABC, abstractmethod
+from typing import Any
+
+
+class BaseProduct(ABC):
+    """Базовое описание продукта"""
+
+    @abstractmethod
+    def __init__(self) -> None:
+        pass
+
+
+class MixinProduct:
+
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        print(repr(self))
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}({self.name}, {self.description}, {self.price}, {self.quantity})"
+
+
+class Product(MixinProduct, BaseProduct):
     """Класс для представления продукта"""
 
     def __init__(self, name: str, description: str, price: float, quantity: int):
@@ -7,6 +28,7 @@ class Product:
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__init__()
 
     @classmethod
     def new_product(cls, dict_product: dict) -> "Product":

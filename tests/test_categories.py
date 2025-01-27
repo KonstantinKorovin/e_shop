@@ -25,11 +25,9 @@ class TestCategory(unittest.TestCase):
         )
 
     def test_add_product(self):
-        assert Category.product_count == 0
         self.category.add_product(self.product1)
         self.category.add_product(self.product2)
         self.category.add_product(self.product3)
-        assert Category.product_count == 3
         assert Category.category_count == 1
         with pytest.raises(TypeError):
             assert self.category.add_product("No product") == "TypeError: Невозможно добавить продукт"
@@ -43,9 +41,11 @@ class TestCategory(unittest.TestCase):
 
 
 def test_str_products():
+    assert Category.product_count == 0
     my_products = Category(
         "Смартфоны",
         "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни",
         [Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)],
     )
     assert str(my_products) == "Смартфоны, количество продуктов: 5"
+    assert Category.product_count == 1

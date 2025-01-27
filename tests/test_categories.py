@@ -1,5 +1,7 @@
 import unittest
 
+import pytest
+
 from src.categories import Category
 from src.products import Product
 
@@ -29,6 +31,8 @@ class TestCategory(unittest.TestCase):
         self.category.add_product(self.product3)
         assert Category.product_count == 3
         assert Category.category_count == 1
+        with pytest.raises(TypeError):
+            assert self.category.add_product("No product") == "TypeError: Невозможно добавить продукт"
 
     def test_products(self):
         assert self.category.products == [

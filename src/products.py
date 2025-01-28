@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-from multiprocessing.managers import Value
 from typing import Any
 
 
@@ -30,7 +29,7 @@ class Product(MixinProduct, BaseProduct):
         self.__price = price
         self.quantity = quantity
         if self.quantity == 0:
-            raise ValueError('Товар с нулевым количеством не может быть добавлен')
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
         super().__init__()
 
     @classmethod

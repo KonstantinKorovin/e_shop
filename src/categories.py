@@ -38,20 +38,20 @@ class Category:
             counter_quantity += x.quantity
         return f"{self.name}, количество продуктов: {counter_quantity}"
 
-    def middle_price(self):
+    def middle_price(self) -> float:
         try:
             price_product_list = [product.price for product in self.__products]
             return sum(price_product_list) / len(self.__products)
         except ZeroDivisionError:
-            return 'В списке должен быть хотя бы один товар'
+            return 0
 
 
-'''if __name__ == '__main__':
+"""if __name__ == '__main__':
     try:
         product_invalid = Product("Бракованный товар", "Неверное количество", 1000.0, 0)
     except ValueError as e:
         print(
-            "Возникла ошибка ValueError прерывающая работу программы при попытке добавить продукт с нулевым количеством")
+        "Возникла ошибка ValueError прерывающая работу программы при попытке добавить продукт с нулевым количеством")
     else:
         print("Не возникла ошибка ValueError при попытке добавить продукт с нулевым количеством")
 
@@ -64,4 +64,4 @@ class Category:
     print(category1.middle_price())
 
     category_empty = Category("Пустая категория", "Категория без продуктов", [])
-    print(category_empty.middle_price())'''
+    print(category_empty.middle_price())"""

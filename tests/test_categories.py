@@ -59,6 +59,4 @@ def test_middle_price():
     category1 = Category("Смартфоны", "Категория смартфонов", [product1, product2, product3])
     category2 = Category("Пустая категория", "Категория без продуктов", [])
     assert category1.middle_price() == 140333.33333333334
-    assert category2.middle_price() == 'В списке должен быть хотя бы один товар'
-
-
+    assert category2.middle_price() == 0
